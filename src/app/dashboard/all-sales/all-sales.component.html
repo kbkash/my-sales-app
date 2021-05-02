@@ -1,0 +1,77 @@
+
+<section class="section" *ngIf='!historyLoaded'> 
+    <div class="container">
+        <div class="columns is-centered is-vcentered is-hcentered">
+            <div class="column is-full is-centered is-vcentered">
+                <h1 class="title is-centered is-vcentered"> Loading </h1>
+                <progress class="progress is-large is-info" max="100">100%</progress>
+                <h2 class="subtitle"> If it's taking too long to load, it's probably due to weak internet connectivity. Try refreshing the page</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" *ngIf='historyLoaded'>
+    <div class="container" >
+    
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-text-light has-background-primary">
+            
+            <div class="column">
+                Date
+            </div>
+            <div class="column">
+                product Code
+            </div>
+            <div class="column">
+                Quantity
+            </div>
+            <div class="column">
+                Sold By
+            </div>
+            <div class="column">
+                Rate while sold
+            </div>
+            <div class="column">
+                VAT applied
+            </div>
+            <div class="column">
+                Total
+            </div>
+        </div>
+    
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-border-primary" *ngFor="let sale of history">
+            <div class="column">
+                {{sale.sold_date}}
+            </div>
+            <div class="column">
+                {{sale.product_code}}
+            </div>
+            <div class="column">
+                {{sale.sold_quantity}}
+            </div>
+            <div class="column">
+                {{sale.full_name}}
+            </div>
+            <div class="column">
+                {{sale.sold_rate}}
+            </div>
+            <div class="column">
+                {{sale.vat_rate}}
+            </div>
+            <div class="column">
+                {{(sale.sold_quantity * sale.sold_rate) * ((100 + sale.vat_rate)/100)}} <sub>incl. of VAT</sub>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+<!-- <google-chart 
+    [title]="chart.title" 
+    [type]="chart.type" 
+    [data]="chart.data" 
+    [columns]="chart.columnNames" 
+    [options]="chart.options"
+    [width]='chart.height'>
+</google-chart> -->

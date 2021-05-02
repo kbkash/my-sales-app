@@ -1,0 +1,72 @@
+
+<section class="section" *ngIf='!productLoaded'> 
+    <div class="container">
+        <div class="columns is-centered is-vcentered is-hcentered">
+            <div class="column is-full is-centered is-vcentered">
+                <h1 class="title is-centered is-vcentered"> Loading  </h1>
+                <progress class="progress is-large is-info" max="100">100%</progress>
+                <h2 class="subtitle"> If it's taking too long to load, it's probably due to weak internet connectivity. Try refreshing the page</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" *ngIf='productLoaded'>
+    <div class="container" >
+    
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-text-light has-background-primary">
+            
+            <div class="column">
+                Product Code
+            </div>
+            <div class="column">
+                Product Type
+            </div>
+            <div class="column">
+                Manufacturer
+            </div>
+            <div class="column">
+                Price/Unit
+            </div>
+            <div class="column">
+                Unit in stock
+            </div>
+            <div class="column" *ngIf="is_admin==='1'">
+                <button class="button is-info" (click)='addNewProduct()'  >Add New Product</button>
+            </div>
+            
+        </div>
+    
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-border-primary" *ngFor="let product of products">
+            <div class="column">
+                {{product.product_code}}
+            </div>
+            <div class="column">
+                {{product.product_type}}
+            </div>
+            <div class="column">
+                {{product.product_manufacturer}}
+            </div>
+            <div class="column">
+                Rs. {{product.product_price}}
+            </div>
+            <div class="column">
+                {{product.product_in_stock}}
+            </div>
+            <div class="column" (click)="editProduct(product.product_id) " *ngIf="is_admin==='1'">
+                Update
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+<!-- <google-chart 
+    [title]="chart.title" 
+    [type]="chart.type" 
+    [data]="chart.data" 
+    [columns]="chart.columnNames" 
+    [options]="chart.options"
+    [width]='chart.height'>
+</google-chart> -->

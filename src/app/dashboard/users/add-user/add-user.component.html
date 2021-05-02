@@ -1,0 +1,140 @@
+<section class="hero has-background-white-ter is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-7-tablet is-6-desktop is-5-widescreen">
+            
+            <form  class="box" [formGroup]='formAddUser' (ngSubmit)='addOrUpdateUser()'> <!--   -->
+                <div class="columns is-mobile">
+                    <div class="column is-four-fifths">
+                      <p class="title is-5 has-text-centered" >Add New User</p>
+                    </div>
+                    <div class="column is-one-fifth">
+                      <span class="icon is-medium" (click)="gotoUser()">
+                          <img src="../../assets/icons/window-close-solid.svg" alt="close"> 
+                      </span>
+                    </div>
+                </div>
+  
+              <div class="field">
+                <label for="" class="label">Username</label>
+                <div class="control has-icons-left">
+                  <input formControlName='username' type="text" placeholder="eg: joedoe" class="input" required>
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-user"></i> 
+                  </span>
+                </div>
+              </div>
+  
+              <div class="field">
+                <label for="" class="label">Email</label>
+                <div class="control has-icons-left">
+                  <input formControlName='email' type="email" placeholder="eg: joedoe@email.com" class="input" required>
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-envelope"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="" class="label">Password</label>
+                <div class="control has-icons-left">
+                  <input formControlName='password' type="password" placeholder="eg: ********" class="input" >
+                  <span class="icon is-large is-left">
+                    <i class="fa fa-lock" ></i>
+                  </span>
+                </div>
+              </div>
+   
+              <div class="field">
+                <label for="" class="label">Full Name</label>
+                <div class="control has-icons-left">
+                  <input formControlName='full_name' type="text" placeholder="eg: Joe Doe" class="input" required>
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-font"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="" class="label">Contact Number</label>
+                <div class="control has-icons-left">
+                  <input formControlName='contact_number' type="text" placeholder="eg: +97798xxxxxxxx" class="input" required>
+                  <span class="icon is-small is-left">
+                    <i class="fa fa-phone"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="" class="label">Address</label>
+                <div class="control has-icons-left">
+                  <input formControlName='address' type="text" placeholder="eg: White House ;)" class="input" required>
+                  <span class="icon is-small is-left">
+                    <!-- <img class="icon is-small" src="../../assets/icons/house-user-solid.svg" alt=""> -->
+                    <!-- <i class="fas fa-house-user"></i> -->
+                    <i class="fas fa-map-marked-alt"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="columns">
+                
+                <div class="column">
+                  <div class="field">
+                    <span>
+                      <label for="" class="label is-inline-block"> Make Admin </label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <input class="is-inline-block" formControlName='is_admin' type="checkbox" id="is_admin" (change)="toggleAdmin($event.target.checked)">
+                    </span>
+                  </div>                  
+                </div>
+
+                <div class="column">
+                  <div class="field">
+                    <span>
+                      <label for="" class="label is-inline-block"> Account is Activated </label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+                      <input class="is-inline-block" formControlName='is_active' type="checkbox" id="is_active" (change)="toggleActive($event.target.checked)">
+                    </span>
+                  </div>      
+                </div>
+
+              </div>
+              
+              <div class="field">
+                <div class="columns has-text-centered">
+                  
+                  <div class="column" *ngIf="formMode === 'edit'">
+                    <button type="submit" class="button is-success">
+                      Update
+                    </button>
+                  </div>
+
+                  <div class="column" *ngIf="formMode === 'add'">
+                    <button type="submit" class="button is-success"  >
+                      Add
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <!-- <div class="field">
+                <div class="columns has-text-centered">
+                  <div class="column" >
+                    <button type="submit" class="button is-success" >
+                        Add
+                      </button>
+                  </div>
+                </div>
+              </div> -->
+
+            </form>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </section>
+  

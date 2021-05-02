@@ -1,0 +1,75 @@
+<section class="section" *ngIf='!homeLoaded'> 
+    <div class="container">
+        <div class="columns is-centered is-vcentered is-hcentered">
+            <div class="column is-full is-centered is-vcentered">
+                <h1 class="title is-centered is-vcentered"> Loading  </h1>
+                <progress class="progress is-large is-info" max="100">100%</progress>
+                <h2 class="subtitle"> If it's taking too long to load, it's probably due to weak internet connectivity. Try refreshing the page</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section "  *ngIf="homeLoaded" > 
+    <div class="container ">
+        <div class="columns">
+            <div class="column is-8 is-centered is-pulled-left" *ngIf="is_admin==='1'">
+                <p class="title is-3 is-centered" (click)="getChartData(7)" *ngIf="dataMode==='Monthly'" >Show Weekly</p>
+                <p class="title is-3 is-centered" (click)="getChartData(30)" *ngIf="dataMode==='Weekly'" >Show Monthly</p>
+                <google-chart class="has-background-dark" style="margin: 0px;" [title]="title" [type]="myType" [data]="myData" [options]="options"   *ngIf='chartHasData' ></google-chart>
+            </div>
+            <div class="column is-4">
+                <form  class="box"  (ngSubmit)='onSubmitSales()' > 
+                    <p class="title is-5">Making Sale</p>
+        
+                    <div class="field">
+                      <label for="" class="label">Product</label>
+                      <div class="field">
+                        <div class="control">
+                          <div class="select ">
+                            <select (change)=setProductId($event.target.value)>
+                              <option disabled selected value=null>Select Product Code</option>
+                              <option *ngFor="let product of products" [value]="product.product_id"> {{product.product_code}} </option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="" class="label">VAT Rate</label>
+                        <div class="field">
+                            <div class="control">
+                            <div class="select ">
+                                <select (change)=setVATCOnfigId($event.target.value)>
+                                <option selected [value]="VATConfig['config_id']"> {{VATConfig['vat_rate']}} </option>
+                                </select>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="field">
+                        <label for="" class="label">Selling Rate</label>
+                        <div class="control has-icons-left">
+                          <input type="number" placeholder="eg: ********" class="input" required [value]='selectedProductRate' (change)="setProductRate($event.target.value)">
+                        </div>
+                    </div>
+
+                    <div class="field">
+                      <label for="" class="label">Quantity Sold</label>
+                      <div class="control has-icons-left">
+                        <input type="number" placeholder="eg: ********" class="input" required (change)="setSoldQuantity($event.target.value)">
+                      </div>
+                    </div>
+
+                    <div class="field">
+                      <button type="submit" class="button is-success" >
+                        Make Transaction
+                      </button>
+                    </div>
+                  </form>   
+            </div>
+        </div>
+    </div>
+</section>

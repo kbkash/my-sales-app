@@ -1,0 +1,63 @@
+
+<section class="section" *ngIf="!rateLoaded"> 
+    <div class="container">
+        <div class="columns is-centered is-vcentered is-hcentered">
+            <div class="column is-full is-centered is-vcentered">
+                <h1 class="title is-centered is-vcentered"> Loading Products </h1>
+                <progress class="progress is-large is-info" max="100">100%</progress>
+                <h2 class="subtitle"> If it's taking too long to load, it's probably due to weak internet connectivity. Try refreshing the page</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" *ngIf="rateLoaded">
+    <div class="container" >
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-text-light has-background-primary">
+            <div class="column is-12 title is-1">
+                Foreign Exchange Rate
+                <p class="title is-3" > Provided By Nepal Rastra Bank</p>
+            </div>
+        </div>
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-text-light has-background-primary">
+            <div class="column is-12 title is-3">
+                Published On &nbsp; {{publised_on}}
+            </div>
+        </div>
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-text-light has-background-info">
+            <div class="column">
+                Currency Name
+            </div>
+    
+            <div class="column">
+                Currency Unit
+            </div>
+    
+            <div class="column">
+                Buy Rate
+            </div>
+    
+            <div class="column">
+                Sell Rate
+            </div>
+        </div>
+    
+        <div class="columns has-border has-text-centered is-vcentered is-centered is-mobile " *ngFor="let rate of data">
+            <div class="column ">
+                {{rate.currency.name}} &nbsp; &nbsp; ({{rate.currency.iso3}})
+            </div>
+    
+            <div class="column">
+                {{rate.currency.unit}}
+            </div>
+    
+            <div class="column">
+                {{rate.buy}}
+            </div>
+    
+            <div class="column">
+                {{rate.sell}}
+            </div>
+        </div>
+    </div>
+</section>

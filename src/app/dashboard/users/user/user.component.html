@@ -1,0 +1,85 @@
+
+<section class="section" *ngIf='!usersLoaded'> 
+    <div class="container">
+        <div class="columns is-centered is-vcentered is-hcentered">
+            <div class="column is-full is-centered is-vcentered">
+                <h1 class="title is-centered is-vcentered"> Loading Users </h1>
+                <progress class="progress is-large is-info" max="100">100%</progress>
+                <h2 class="subtitle"> If it's taking too long to load, it's probably due to weak internet connectivity. Try refreshing the page</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section" *ngIf='usersLoaded'>
+    <div class="container" >
+    
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-text-light has-background-primary">
+            
+            <div class="column">
+                Name
+            </div>
+            <div class="column">
+                Username
+            </div>
+            <div class="column">
+                Email
+            </div>
+            <div class="column">
+                phone
+            </div>
+            <div class="column">
+                address
+            </div>
+            <div class="column">
+                is admin
+            </div>
+            <div class="column">
+                is active
+            </div>
+
+            <div class="column">
+                <button class="button is-info" (click)='addNewUser()' >Add New User</button>
+            </div>
+            
+        </div>
+    
+        <div class="columns has-text-centered is-vcentered is-centered is-mobile has-border-primary" *ngFor="let user of users">
+            <div class="column">
+                {{user.full_name}}
+            </div>
+            <div class="column">
+                {{user.username}}
+            </div>
+            <div class="column">
+                {{user.email}}
+            </div>
+            <div class="column">
+                {{user.contact_number}}
+            </div>
+            <div class="column">
+                {{user.address}}
+            </div>
+            <div class="column">
+                {{user.is_admin}}
+            </div>
+            <div class="column">
+                {{user.is_active}}
+            </div>
+            <div class="column" (click)="editUser(user.user_id)">
+                Edit
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+<!-- <google-chart 
+    [title]="chart.title" 
+    [type]="chart.type" 
+    [data]="chart.data" 
+    [columns]="chart.columnNames" 
+    [options]="chart.options"
+    [width]='chart.height'>
+</google-chart> -->

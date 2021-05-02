@@ -1,0 +1,85 @@
+<section class="hero has-background-white-ter is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-7-tablet is-6-desktop is-5-widescreen">
+            
+            <form class="box" [formGroup]='productForm' (ngSubmit)="addOrUpdateProduct()">
+              <div class="columns is-mobile">
+                <div class="column is-four-fifths">
+                  <p class="title is-5 has-text-centered" *ngIf="formMode === 'add'">Add Product</p>
+                  <p class="title is-5 has-text-centered" *ngIf="formMode === 'edit'">Edit Product</p>
+                </div>
+                <div class="column is-one-fifth">
+                  <span class="icon is-large" (click)="closeForm()">
+                    <img src="../../assets/icons/window-close-solid.svg" alt="close"> 
+                  </span>
+
+                </div>
+              </div>
+              
+              <div class="field">
+                <label for="" class="label">Product Code</label>
+                <div class="control has-icons-left">
+                  <input formControlName='product_code' type="text"  class="input" required>
+                </div>
+              </div>
+  
+              <div class="field">
+                <label for="" class="label">Product Type</label>
+                <div class="control has-icons-left">
+                  <input formControlName='product_type' type="text"  class="input" required>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="" class="label">Manufacturer</label>
+                <div class="control has-icons-left">
+                  <input formControlName='product_manufacturer' type="text" class="input" required>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="" class="label">Price/Unit</label>
+                <div class="control has-icons-left">
+                  <input formControlName='product_price' type="number" class="input" required>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="" class="label">Unit in Stock </label>
+                <div class="control has-icons-left">
+                  <input formControlName='product_in_stock' type="number" class="input" required>
+                </div>
+              </div>
+
+              <div class="field">
+                <div class="columns has-text-centered">
+                  
+                  <div class="column" *ngIf="formMode === 'edit'">
+                    <button type="submit" class="button is-success">
+                      Update
+                    </button>
+                  </div>
+
+                  <div class="column" *ngIf="formMode === 'add'">
+                    <button type="submit" class="button is-success"  >
+                      Add
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            </form>
+          </div>        
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- <button (click)="login()">test me</button> -->
+  
+  
+  
+  
+  <!-- <router-outlet></router-outlet> -->
